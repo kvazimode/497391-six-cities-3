@@ -1,9 +1,12 @@
 import React from 'react';
 import Main from './main.jsx';
 
-const App = () => {
+const App = (props) => {
+  // eslint-disable-next-line react/prop-types
+  const {offerCount = 0} = props;
+
   return <React.Fragment>
-    <Main/>
+    <Main offerCount = {offerCount} />
   </React.Fragment>;
 };
 

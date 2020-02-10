@@ -2,14 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app.jsx';
 
-const Data = {
-  offerCount: 707,
-  prop1: {
-    test: `test data`
-  }
+const data = {
+  offerCount: 707
 };
 
 ReactDOM.render(
-    <App {...Data} />,
+    <App {...data} />,
     document.querySelector(`#root`)
 );

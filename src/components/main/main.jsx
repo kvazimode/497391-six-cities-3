@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PlaceCard from '../place-card/place-card.jsx';
 
 const Main = (props) => {
-  const {offerCount = 0, offerTitles = [`no titles`]} = props;
+  const {offerCount, offerTitles} = props;
 
   return <React.Fragment>
     <div className="page page--gray page--main">
@@ -102,9 +102,14 @@ const Main = (props) => {
   </React.Fragment>;
 };
 
+Main.defaultProps = {
+  offerCount: 0,
+  offerTitles: [`Ошибка загрузки`]
+};
+
 Main.propTypes = {
   offerCount: PropTypes.number.isRequired,
-  offerTitles: PropTypes.arrayOf(PropTypes.string.isRequired)
+  offerTitles: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
 };
 
 export default Main;

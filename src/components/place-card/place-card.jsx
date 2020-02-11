@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const PlaceCard = (props) => {
-  const {title = `offer`} = props;
+  const {title} = props;
 
   return <React.Fragment>
     <article className="cities__place-card place-card">

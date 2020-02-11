@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const PlaceCard = (props) => {
   const {title = `offer`} = props;
@@ -39,6 +40,10 @@ const PlaceCard = (props) => {
       </div>
     </article>
   </React.Fragment>;
+};
+
+PlaceCard.propTypes = {
+  title: PropTypes.string.isRequired
 };
 
 export default PlaceCard;

@@ -8,6 +8,6 @@ const data = {
 };
 
 ReactDOM.render(
-    <App {...data} />,
+    <App {...data}/>,
     document.querySelector(`#root`)
 );

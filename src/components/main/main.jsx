@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import PlaceCard from '../place-card/place-card.jsx';
 
 const Main = (props) => {
@@ -99,6 +100,11 @@ const Main = (props) => {
       </main>
     </div>
   </React.Fragment>;
+};
+
+Main.propTypes = {
+  offerCount: PropTypes.number.isRequired,
+  offerTitles: PropTypes.arrayOf(PropTypes.string.isRequired)
 };
 
 export default Main;

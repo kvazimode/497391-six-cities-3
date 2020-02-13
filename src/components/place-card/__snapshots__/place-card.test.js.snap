@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render place card component. 1`] = `
+exports[`Render place card Should render russian title 1`] = `
 <article
   className="cities__place-card place-card"
 >
@@ -104,3 +104,5 @@ exports[`Render place card component. 1`] = `
   </div>
 </article>
 `;
+
+exports[`Render place card Should return null 1`] = `null`;

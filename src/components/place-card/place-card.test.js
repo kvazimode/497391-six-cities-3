@@ -4,10 +4,20 @@ import PlaceCard from './place-card.jsx';
 
 const title = `Название на русском языке`;
 
-it(`Render place card component.`, () => {
-  const tree = renderer
-    .create(<PlaceCard title={title} onOfferTitleClick={()=>{}}/>)
-    .toJSON();
+describe(`Render place card`, () => {
+  it(`Should render russian title`, () => {
+    const tree = renderer
+      .create(<PlaceCard title={title} onOfferTitleClick={()=>{}}/>)
+      .toJSON();
 
-  expect(tree).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`Should return null`, () => {
+    const tree = renderer
+      .create(<PlaceCard title={``} onOfferTitleClick={()=>{}}/>)
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
 });

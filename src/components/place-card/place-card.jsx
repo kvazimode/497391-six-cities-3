@@ -4,6 +4,10 @@ import PropTypes from 'prop-types';
 const PlaceCard = (props) => {
   const {title, onOfferTitleClick} = props;
 
+  if (!title) {
+    return null;
+  }
+
   return <React.Fragment>
     <article className="cities__place-card place-card">
       <div className="place-card__mark">

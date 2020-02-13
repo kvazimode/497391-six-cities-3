@@ -8,14 +8,15 @@ const titles = [
   `Your last oportunity`,
   `Best place in the world`,
   `You should be there!`
-]
+];
 
 it(`Render app with main component.`, () => {
   const tree = renderer
-    .create(<App 
+    .create(<App
       offerCount={titles.length}
       offerTitles={titles}
-      />)
+      onOfferTitleClick={()=>{}}
+    />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

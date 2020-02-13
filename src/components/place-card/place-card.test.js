@@ -6,7 +6,7 @@ const title = `Название на русском языке`;
 
 it(`Render place card component.`, () => {
   const tree = renderer
-    .create(<PlaceCard title={title}/>)
+    .create(<PlaceCard title={title} onOfferTitleClick={()=>{}}/>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

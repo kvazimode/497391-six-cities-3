@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from './app.jsx';
+import Main from './main.jsx';
 
 const titles = [
   `Название на русском языке`,
@@ -10,9 +10,9 @@ const titles = [
   `You should be there!`
 ]
 
-it(`Render app with main component.`, () => {
+it(`Render Main component.`, () => {
   const tree = renderer
-    .create(<App 
+    .create(<Main 
       offerCount={titles.length}
       offerTitles={titles}
       />)

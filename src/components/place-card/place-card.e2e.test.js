@@ -9,32 +9,16 @@ Enzyme.configure({
 
 const title = `Название на русском языке`;
 
-describe(`Title click test`, () => {
-  it(`Title click returns callback`, () => {
-    const handleOfferTitleClick = jest.fn();
-    const mainScreen = shallow(
-        <PlaceCard
-          title={title}
-          onOfferTitleClick={handleOfferTitleClick}
-        />
-    );
+it(`Title click triggers callback`, () => {
+  const handleOfferTitleClick = jest.fn();
+  const mainScreen = shallow(
+      <PlaceCard
+        title={title}
+        onOfferTitleClick={handleOfferTitleClick}
+      />
+  );
 
-    const offerTitle = mainScreen.find(`.place-card__name`);
-    offerTitle.simulate(`click`);
-    expect(handleOfferTitleClick.mock.calls.length).toBe(1);
-  });
-
-  it(`Title click should not return callback`, () => {
-    const handleOfferTitleClick = jest.fn();
-    const mainScreen = shallow(
-        <PlaceCard
-          title={title}
-          onOfferTitleClick={() => {}}
-        />
-    );
-
-    const offerTitle = mainScreen.find(`.place-card__name`);
-    offerTitle.simulate(`click`);
-    expect(handleOfferTitleClick.mock.calls.length).toBe(0);
-  });
+  const offerTitle = mainScreen.find(`.place-card__name`);
+  offerTitle.simulate(`click`);
+  expect(handleOfferTitleClick.mock.calls.length).toBe(1);
 });

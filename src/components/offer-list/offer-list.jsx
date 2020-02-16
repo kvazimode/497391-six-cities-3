@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const offerList = (props) => {
-  
+class OfferList extends React.Component {
+  constructr(props) {
+    super(props);
+    this.state = {};
+  }
 }

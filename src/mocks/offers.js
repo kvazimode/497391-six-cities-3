@@ -31,4 +31,6 @@ const offerList = [
     isPremium: true,
     rating: 100
   }
-]
+];
+
+export default offerList;

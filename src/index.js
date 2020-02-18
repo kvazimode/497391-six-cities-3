@@ -1,14 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app.jsx';
-
-const data = {
-  offerCount: 707,
-  offerTitles: [`The place you were looking for`, `Barn, but look at this view!`, `Wooden house with free food`, `Beach camping`],
-  onOfferTitleClick() {}
-};
+import offerList from './mocks/offers.js';
 
 ReactDOM.render(
-    <App {...data}/>,
+    <App offerList={offerList}/>,
     document.querySelector(`#root`)
 );

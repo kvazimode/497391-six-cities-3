@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import OfferList from '../offer-list/offer-list.jsx';
 
-const Main = (props) => {
-  const {offerList} = props;
+const Main = ({offerList}) => {
   const offerCount = offerList.length;
 
   return <React.Fragment>

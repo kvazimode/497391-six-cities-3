@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PlaceCard from '../place-card/place-card.jsx';
+import OfferList from '../offer-list/offer-list.jsx';
 
-const Main = (props) => {
-  const {offerCount, offerTitles, onOfferTitleClick} = props;
+const Main = ({offerList}) => {
+  const offerCount = offerList.length;
 
   return <React.Fragment>
     <div className="page page--gray page--main">
@@ -88,9 +88,7 @@ const Main = (props) => {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                {offerTitles.map((title, i) => <PlaceCard key={title + i} title={title} onOfferTitleClick={onOfferTitleClick}/>)}
-              </div>
+              <OfferList offerList={offerList}/>
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>
@@ -104,13 +102,11 @@ const Main = (props) => {
 
 Main.defaultProps = {
   offerCount: 0,
-  offerTitles: [`Ошибка загрузки`]
+  offerList: [`Ошибка загрузки`]
 };
 
 Main.propTypes = {
-  offerCount: PropTypes.number.isRequired,
-  offerTitles: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  onOfferTitleClick: PropTypes.func.isRequired
+  offerList: PropTypes.array.isRequired
 };
 
 export default Main;

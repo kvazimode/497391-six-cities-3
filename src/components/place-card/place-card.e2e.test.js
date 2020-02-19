@@ -17,19 +17,33 @@ const offer = {
   rating: 80
 };
 
-it(`Title click and card mouse enter triggers callback`, () => {
-  const handleOfferTitleClick = jest.fn();
+const handleOfferTitleClick = jest.fn();
+const handleCardMOuseEnter = jest.fn();
+
+it(`Title click enter triggers callback`, () => {
   const mainScreen = shallow(
       <PlaceCard
         offer={offer}
         onOfferTitleClick={handleOfferTitleClick}
-        onCardMouseEnter={handleOfferTitleClick}
+        onCardMouseEnter={handleCardMOuseEnter}
       />
   );
 
   const offerTitle = mainScreen.find(`.place-card__name`);
-  const card = mainScreen.find(`.place-card`);
   offerTitle.simulate(`click`);
+  expect(handleOfferTitleClick).toHaveBeenCalledTimes(1);
+});
+
+it(`Card mouse enter triggers callback with offer id`, () => {
+  const mainScreen = shallow(
+      <PlaceCard
+        offer={offer}
+        onOfferTitleClick={handleOfferTitleClick}
+        onCardMouseEnter={handleCardMOuseEnter}
+      />
+  );
+
+  const card = mainScreen.find(`.place-card`);
   card.simulate(`mouseenter`);
-  expect(handleOfferTitleClick.mock.calls.length).toBe(2);
+  expect(handleCardMOuseEnter).toBeCalledWith(offer.id);
 });

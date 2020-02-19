@@ -6,7 +6,7 @@ class OfferList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      offer: null
+      offerId: null
     };
     this._mouseEnterHandler = this._mouseEnterHandler.bind(this);
     this._offerTitleClickHandler = this._offerTitleClickHandler.bind(this);
@@ -27,9 +27,8 @@ class OfferList extends React.Component {
     );
   }
 
-  _mouseEnterHandler(evt) {
-    evt.preventDefault();
-    this.setState({offer: evt.currentTarget});
+  _mouseEnterHandler(id) {
+    this.setState({offerId: id});
   }
   _offerTitleClickHandler() {
 

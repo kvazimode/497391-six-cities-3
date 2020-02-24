@@ -92,7 +92,7 @@ const Main = ({offerList}) => {
               <OfferList offerList={offerList}/>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"><Map offerList={offerList} /></section>
+              <Map offerList={offerList} />
             </div>
           </div>
         </div>

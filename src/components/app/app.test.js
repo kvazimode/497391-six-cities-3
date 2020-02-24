@@ -10,7 +10,8 @@ const offerList = [
     value: 120,
     type: `Apartment`,
     isPremium: true,
-    rating: 80
+    rating: 80,
+    сoord: [52.38333, 4.9]
   },
   {
     id: 2,
@@ -19,7 +20,8 @@ const offerList = [
     value: 120,
     type: `Apartment`,
     isPremium: true,
-    rating: 80
+    rating: 80,
+    сoord: [52.38333, 4.9]
   }
 ];
 

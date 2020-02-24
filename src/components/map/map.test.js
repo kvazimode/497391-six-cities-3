@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Main from './main.jsx';
+import Map from './map.jsx';
 
 const offerList = [
   {
@@ -25,10 +25,15 @@ const offerList = [
   }
 ];
 
-it(`Render Main component.`, () => {
+it(`Render map`, () => {
   const tree = renderer
-    .create(<Main offerList={offerList}/>)
-    .toJSON();
+  .create(<Map offerList={offerList} />,
+      {
+        createNodeMock: () => {
+          return {};
+        }
+      })
+  .toJSON();
 
   expect(tree).toMatchSnapshot();
 });

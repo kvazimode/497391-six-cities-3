@@ -26,11 +26,11 @@ class Map extends PureComponent {
     this._mapInstance.setView(center, zoom);
 
     leaflet
-      .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, { 
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+      .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
+        attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
       })
       .addTo(this._mapInstance);
-    
+
     pinList.map((cords) => this.addPin(cords));
   }
 
@@ -40,7 +40,7 @@ class Map extends PureComponent {
   }
 
   removeMap() {
-    this._mapInstance.remove;
+    this._mapInstance.remove();
     this._mapInstance = null;
   }
 
@@ -48,8 +48,8 @@ class Map extends PureComponent {
     const {offerList} = this.props;
     const pinList = offerList.map((offer) => {
       return offer.coord;
-    })
-    this.createMap(pinList)
+    });
+    this.createMap(pinList);
   }
 
   componentWillUnmount() {
@@ -57,7 +57,7 @@ class Map extends PureComponent {
   }
 
   render() {
-    return <div id="map" style={{height: `100%`}} ref={this._mapRef}></div>
+    return <section className="cities__map map" ref={this._mapRef}></section>;
   }
 }
 
@@ -72,6 +72,6 @@ Map.propTypes = {
     rating: PropTypes.number,
     coords: PropTypes.array
   }).isRequired)
-}
+};
 
-export default Map
+export default Map;

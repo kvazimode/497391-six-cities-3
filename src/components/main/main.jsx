@@ -57,7 +57,7 @@ const Main = ({offerList, handleCityClick, currentCity, cityList}) => {
               <OfferList offerList={offerList}/>
             </section>
             <div className="cities__right-section">
-              <Map offerList={offerList} />
+              <Map offerList={offerList} currentCity={currentCity}/>
             </div>
           </div>
         </div>

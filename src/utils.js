@@ -1,6 +1,7 @@
 export const getCityList = (offers) => {
   const fullCityList = offers.map((offer) => offer.city);
-  return Array.from(new Set(fullCityList));
+  const cityList = Array.from(new Set(fullCityList));
+  return cityList.slice(0, 5);
 };
 
 export const getOfferListByCity = (offers, city) => {

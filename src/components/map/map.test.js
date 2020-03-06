@@ -11,7 +11,8 @@ const offerList = [
     type: `Apartment`,
     isPremium: true,
     rating: 80,
-    сoord: [52.38333, 4.9]
+    сoord: [52.38333, 4.9],
+    city: `Paris`
   },
   {
     id: 2,
@@ -21,13 +22,16 @@ const offerList = [
     type: `Apartment`,
     isPremium: true,
     rating: 80,
-    сoord: [52.38333, 4.9]
+    сoord: [52.38333, 4.9],
+    city: `Amsterdam`
   }
 ];
 
+const currentCity = `Amsterdam`;
+
 it(`Render map`, () => {
   const tree = renderer
-  .create(<Map offerList={offerList} />,
+  .create(<Map offerList={offerList} currentCity={currentCity}/>,
       {
         createNodeMock: () => {
           return {};

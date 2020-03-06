@@ -2,6 +2,15 @@ import React, {PureComponent, createRef} from 'react';
 import PropTypes from 'prop-types';
 import leaflet from 'leaflet';
 
+const cityCordMap = {
+  Paris: [48.858, 2.293],
+  Hamburg: [53.55, 9.96],
+  Cologne: [50.93, 6.94],
+  Amsterdam: [52.38, 4.9],
+  Brussels: [50.85, 4.35],
+  Dusseldorf: [51.23, 6.78],
+};
+
 class Map extends PureComponent {
   constructor(props) {
     super(props);
@@ -9,7 +18,6 @@ class Map extends PureComponent {
     this._mapRef = createRef();
     this._mapInstance = null;
     this._mapSetup = {
-      center: [52.38333, 4.9],
       zoom: 12,
       zoomControl: false,
       marker: true
@@ -21,7 +29,8 @@ class Map extends PureComponent {
   }
 
   createMap(pinList) {
-    const {center, zoom} = this._mapSetup;
+    const center = cityCordMap[this.props.currentCity];
+    const {zoom} = this._mapSetup;
     this._mapInstance = leaflet.map(this._mapRef.current, this._mapSetup);
     this._mapInstance.setView(center, zoom);
 
@@ -44,12 +53,23 @@ class Map extends PureComponent {
     this._mapInstance = null;
   }
 
-  componentDidMount() {
+  getPinList() {
     const {offerList} = this.props;
     const pinList = offerList.map((offer) => {
       return offer.coord;
     });
-    this.createMap(pinList);
+    return pinList;
+  }
+
+  componentDidMount() {
+    this.createMap(this.getPinList());
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.currentCity !== prevProps.currentCity) {
+      this.removeMap();
+      this.createMap(this.getPinList());
+    }
   }
 
   componentWillUnmount() {
@@ -70,8 +90,10 @@ Map.propTypes = {
     type: PropTypes.string,
     isPremium: PropTypes.bool,
     rating: PropTypes.number,
-    coords: PropTypes.array
-  }).isRequired)
+    coords: PropTypes.array,
+    city: PropTypes.string
+  }).isRequired),
+  currentCity: PropTypes.string.isRequired
 };
 
 export default Map;

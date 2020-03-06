@@ -8,6 +8,7 @@ const offerList = [
     isPremium: true,
     rating: 80,
     coord: [52.3909553943508, 4.85309666406198],
+    city: `Amsterdam`
   },
   {
     id: 2,
@@ -17,17 +18,19 @@ const offerList = [
     type: `Private room`,
     isPremium: false,
     rating: 80,
-    coord: [52.369553943508, 4.85309666406198],
+    coord: [53.556, 9.963],
+    city: `Hamburg`
   },
   {
     id: 3,
-    title: `Canal view Prinsengracht`,
+    title: `You can't live closer to Eiffel Tower`,
     imgLink: `img/apartment-02.jpg`,
     value: 132,
     type: `Apartment`,
     isPremium: false,
     rating: 80,
-    coord: [52.3909553943508, 4.929309666406198],
+    coord: [48.856626, 2.292919],
+    city: `Paris`
   },
   {
     id: 4,
@@ -37,7 +40,8 @@ const offerList = [
     type: `Apartment`,
     isPremium: true,
     rating: 100,
-    coord: [52.3809553943508, 4.939309666406198],
+    coord: [50.99, 6.93],
+    city: `Cologne`
   }
 ];
 

@@ -11,7 +11,8 @@ const offerList = [
     type: `Apartment`,
     isPremium: true,
     rating: 80,
-    сoord: [52.38333, 4.9]
+    сoord: [52.38333, 4.9],
+    city: `Amsetrdam`
   },
   {
     id: 2,
@@ -21,13 +22,22 @@ const offerList = [
     type: `Apartment`,
     isPremium: true,
     rating: 80,
-    сoord: [52.38333, 4.9]
+    сoord: [52.38333, 4.9],
+    city: `Paris`
   }
 ];
 
+const cityList = [`Amsterdam`, `Hamburg`];
+const currentCity = `Amsterdam`;
+
 it(`Render Main component.`, () => {
   const tree = renderer
-    .create(<Main offerList={offerList}/>)
+    .create(<Main
+      offerList={offerList}
+      currentCity={currentCity}
+      cityList={cityList}
+      handleCityClick={() => {}}
+    />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

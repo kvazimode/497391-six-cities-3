@@ -4,7 +4,15 @@ import OfferList from '../offer-list/offer-list.jsx';
 import Map from '../map/map.jsx';
 import CityList from '../city-list/city-list.jsx';
 
-const Main = ({offerList, handleCityClick, currentCity, cityList}) => {
+const Main = (props) => {
+  const {
+    offerList,
+    handleCityClick,
+    currentCity,
+    cityList,
+    handleOfferTitleClick,
+    handleOfferMouseEnter
+  } = props;
   const offerCount = offerList.length;
 
   return <React.Fragment>
@@ -54,7 +62,10 @@ const Main = ({offerList, handleCityClick, currentCity, cityList}) => {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul>
               </form>
-              <OfferList offerList={offerList}/>
+              <OfferList
+                offerList={offerList}
+                handleOfferTitleClick={handleOfferTitleClick}
+              />
             </section>
             <div className="cities__right-section">
               <Map offerList={offerList} currentCity={currentCity}/>

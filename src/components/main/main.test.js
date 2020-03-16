@@ -42,15 +42,15 @@ it(`Render Main component.`, () => {
   });
   const tree = renderer
     .create(
-    <Provider store={store}>
-      <Main
-        offerList={offerList}
-        currentCity={currentCity}
-        cityList={cityList}
-        handleCityClick={() => {}}
-        handleOfferTitleClick={() => {}}
-      />
-    </Provider>)
+        <Provider store={store}>
+          <Main
+            offerList={offerList}
+            currentCity={currentCity}
+            cityList={cityList}
+            handleCityClick={() => {}}
+            handleOfferTitleClick={() => {}}
+          />
+        </Provider>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

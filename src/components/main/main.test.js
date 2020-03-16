@@ -1,6 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Main from './main.jsx';
+import {Provider} from 'react-redux';
+import configureStore from 'redux-mock-store';
+
+const mockStore = configureStore([]);
 
 const offerList = [
   {
@@ -31,13 +35,22 @@ const cityList = [`Amsterdam`, `Hamburg`];
 const currentCity = `Amsterdam`;
 
 it(`Render Main component.`, () => {
+  const store = mockStore({
+    offerList,
+    currentCity: `Amsterdam`,
+    cityList: [`Amsterdam`, `Hamburg`]
+  });
   const tree = renderer
-    .create(<Main
-      offerList={offerList}
-      currentCity={currentCity}
-      cityList={cityList}
-      handleCityClick={() => {}}
-    />)
+    .create(
+    <Provider store={store}>
+      <Main
+        offerList={offerList}
+        currentCity={currentCity}
+        cityList={cityList}
+        handleCityClick={() => {}}
+        handleOfferTitleClick={() => {}}
+      />
+    </Provider>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

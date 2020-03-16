@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer.js';
+import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 
 const sortTypeMap = {
   popular: `Popular`,
@@ -10,11 +11,11 @@ const sortTypeMap = {
   rating: `Top rated first`
 };
 
-const SortSetter = ({sortType, expanded, onClick, onTypeClick}) => {
+const SortSetter = ({sortType, isActive, onClick, onTypeClick}) => {
   const sortTypeClickHandler = (e) => {
     onTypeClick(e);
     onClick();
-  }
+  };
   return (
     <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by</span>
@@ -24,15 +25,37 @@ const SortSetter = ({sortType, expanded, onClick, onTypeClick}) => {
           <use xlinkHref="#icon-arrow-select"></use>
         </svg>
       </span>
-      <ul className={`places__options places__options--custom places__options--${expanded ? `opened` : `closed`}`}>
-        {=> (
-          <li key={key} className={`places__option ${sortType === i}`}>{}</li>
-        )}
-        <li className="places__option places__option--active" tabIndex="0">Popular</li>
-        <li className="places__option" tabIndex="0">Price: low to high</li>
-        <li className="places__option" tabIndex="0">Price: high to low</li>
-        <li className="places__option" tabIndex="0">Top rated first</li>
+      <ul className={`places__options places__options--custom places__options--${isActive ? `opened` : `closed`}`}>
+        {Object.keys(sortTypeMap).map((key) => (
+          <li key={key}
+            className={`places__option ${sortType === sortTypeMap[key] ? `places__option--active` : ``}`}
+            tabIndex="0"
+            data-name={key}
+            onClick={sortTypeClickHandler}>
+            {sortTypeMap[key]}</li>
+        ))}
       </ul>
     </form>
-  )
-}
+  );
+};
+
+const mapStateToProps = (state) => {
+  return {
+    sortType: state.sortType
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  onTypeClick(e) {
+    dispatch(ActionCreator.setSortType(e.currentTarget.dataset.name));
+  }
+});
+
+SortSetter.propTypes = {
+  sortType: PropTypes.string,
+  isActive: PropTypes.bool,
+  onClick: PropTypes.func,
+  onTypeClick: PropTypes.func
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withActiveItem(SortSetter));

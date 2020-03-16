@@ -1,7 +1,7 @@
 import React from 'react';
 
-const withActiveItem = (Component) => {
-  class withActiveItem extends React.PureComponent {
+const withActiveItem = (Component) =>
+  class WithActiveItem extends React.PureComponent {
     constructor(props) {
       super(props);
 
@@ -9,11 +9,11 @@ const withActiveItem = (Component) => {
         isActive: false
       };
 
-      this.handleClick = this.handleClick.bind(this)
+      this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick() {
-      this.setState((prevState) => {isActive: !prevState.isActive});
+      this.setState((prevState) => ({isActive: !prevState.isActive}));
     }
 
     render() {
@@ -24,6 +24,6 @@ const withActiveItem = (Component) => {
       );
     }
   };
-}
+
 
 export default withActiveItem;

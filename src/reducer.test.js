@@ -9,7 +9,8 @@ it(`Should return initial state`, () => {
     cityList,
     currentCity: `Amsterdam`,
     currentOffer: null,
-    offerList: getOfferListByCity(offerList, cityList[0])
+    offerList: getOfferListByCity(offerList, cityList[0]),
+    sortType: `popular`
   });
 });
 

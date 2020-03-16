@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import OfferList from '../offer-list/offer-list.jsx';
 import Map from '../map/map.jsx';
 import CityList from '../city-list/city-list.jsx';
+import SortSetter from '../sort-setter/sort-setter.jsx';
 
 const Main = (props) => {
   const {
@@ -46,7 +47,7 @@ const Main = (props) => {
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{offerCount} places to stay in {currentCity}</b>
-              
+              <SortSetter />
               <OfferList
                 offerList={offerList}
                 handleOfferTitleClick={handleOfferTitleClick}

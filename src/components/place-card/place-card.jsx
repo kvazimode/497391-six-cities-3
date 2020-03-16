@@ -9,7 +9,7 @@ const PlaceCard = (props) => {
   }
 
   return <React.Fragment>
-    <article className="cities__place-card place-card" onMouseEnter={() => (onCardMouseEnter(offer.id))}>
+    <article className="cities__place-card place-card" onMouseEnter={() => (onCardMouseEnter(offer))}>
       {offer.isPremium &&
         <div className="place-card__mark">
           <span>Premium</span>

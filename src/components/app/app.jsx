@@ -34,8 +34,9 @@ App.propTypes = {
   offerList: PropTypes.array.isRequired,
   cityList: PropTypes.array.isRequired,
   currentCity: PropTypes.string.isRequired,
+  currentOffer: PropTypes.object,
   handleCityClick: PropTypes.func.isRequired,
-  handleOfferTitleClick: PropTypes.func.isRequired
+  handleOfferTitleClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -43,6 +44,7 @@ const mapStateToProps = (state) => {
     cityList: state.cityList,
     currentCity: state.currentCity,
     offerList: state.offerList,
+    currentOffer: state.currentOffer
   };
 };
 

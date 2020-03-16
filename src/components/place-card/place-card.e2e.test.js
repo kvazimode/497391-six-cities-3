@@ -34,7 +34,7 @@ it(`Title click enter triggers callback`, () => {
   expect(handleOfferTitleClick).toHaveBeenCalledTimes(1);
 });
 
-it(`Card mouse enter triggers callback with offer id`, () => {
+it(`Card mouse enter triggers callback with offer`, () => {
   const mainScreen = shallow(
       <PlaceCard
         offer={offer}
@@ -45,5 +45,5 @@ it(`Card mouse enter triggers callback with offer id`, () => {
 
   const card = mainScreen.find(`.place-card`);
   card.simulate(`mouseenter`);
-  expect(handleCardMOuseEnter).toBeCalledWith(offer.id);
+  expect(handleCardMOuseEnter).toBeCalledWith(offer);
 });

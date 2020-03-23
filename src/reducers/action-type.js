@@ -1,0 +1,9 @@
+const ActionType = {
+  SET_CITY: `SET_CITY`,
+  GET_OFFER_LIST: `GET_OFFER_LIST`,
+  GET_CURRENT_OFFER: `GET_CURRENT_OFFER`,
+  SET_SORT_TYPE: `SET_SORT_TYPE`,
+  LOAD_OFFER_LIST: `LOAD_OFFER_LIST`
+};
+
+export default ActionType;

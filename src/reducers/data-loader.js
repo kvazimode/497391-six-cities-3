@@ -4,12 +4,14 @@ import Adapter from '../adapter/adapter.js';
 
 export const Loader = {
   loadOfferList: () => (dispatch, getState, api) => {
+    dispatch(AppAction.getLoadingState(true));
     return api.get(`/hotels`)
       .then((response) => {
         const data = Adapter.rawToOfferList(response.data);
         dispatch(DataAction.loadOfferList(data.offerList));
         dispatch(DataAction.loadCityList(data.cityList));
-        dispatch(AppAction.setCity(data.cityList[0]))
+        dispatch(AppAction.setCity(data.cityList[0]));
+        dispatch(AppAction.getLoadingState(false));
       })
   }
 };

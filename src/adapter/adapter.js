@@ -1,5 +1,3 @@
-import {assign} from '../utils.js';
-
 const valueAdapter = {
   city: (raw) => ({city: raw.city.name}),
   preview_image: (raw) => ({imgLink: raw.preview_image}),
@@ -26,10 +24,10 @@ const valueAdapter = {
 const adaptOffer = (offer) => {
   let newOffer = {};
   Object.keys(offer).forEach((key) => {
-    newOffer = Object.assign(newOffer, valueAdapter[key](offer))
-  })
+    newOffer = Object.assign(newOffer, valueAdapter[key](offer));
+  });
   return newOffer;
-}
+};
 
 const Adapter = {
   rawToOfferList: (raw) => {
@@ -42,7 +40,7 @@ const Adapter = {
         name,
         zoom,
         coord: [latitude, longitude]
-      }
+      };
 
       return adaptOffer(offer);
     });

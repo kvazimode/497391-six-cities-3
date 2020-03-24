@@ -2,7 +2,10 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import Main from '../main/main.jsx';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer.js';
+import {getSortType, getCurrentCity, getCurrentOffer} from '../../reducers/app/selectors.js';
+import {getCities} from '../../reducers/data/selectors.js';
+import {getSortedOfferList} from '../../reducers/selectors.js';
+import withLoading from '../../hocs/with-loading/with-loading.jsx';
 
 class App extends PureComponent {
 
@@ -11,6 +14,7 @@ class App extends PureComponent {
       cityList,
       currentCity,
       offerList,
+      sortType,
       handleCityClick,
       handleOfferTitleClick
     } = this.props;
@@ -20,6 +24,7 @@ class App extends PureComponent {
         offerList={offerList}
         cityList={cityList}
         currentCity={currentCity}
+        sortType={sortType}
         handleCityClick={handleCityClick}
         handleOfferTitleClick={handleOfferTitleClick}
       />
@@ -41,22 +46,13 @@ App.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    cityList: state.cityList,
-    currentCity: state.currentCity,
-    offerList: state.offerList,
-    currentOffer: state.currentOffer
+    cityList: getCities(state),
+    currentCity: getCurrentCity(state),
+    offerList: getSortedOfferList(state),
+    sortType: getSortType(state),
+    currentOffer: getCurrentOffer(state)
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  handleCityClick(currentCity) {
-    dispatch(ActionCreator.setCity(currentCity));
-    dispatch(ActionCreator.getOfferList(currentCity));
-  },
-  handleOfferTitleClick(offer) {
-    dispatch(ActionCreator.getCurrentOffer(offer));
-  }
-});
-
 export {App};
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withLoading(connect(mapStateToProps)(App));

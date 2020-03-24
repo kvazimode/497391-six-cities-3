@@ -1,9 +1,11 @@
 import ActionType from '../action-type.js';
+import {assign} from '../../utils.js';
 
 const initState = {
   currentCity: null,
   currentOffer: null,
-  sortType: `popular`
+  sortType: `popular`,
+  isLoading: false
 }
 
 const reducer = (state = initState, action) => {
@@ -14,6 +16,8 @@ const reducer = (state = initState, action) => {
       return assign(state, {currentOffer: action.payload});
     case ActionType.SET_SORT_TYPE:
       return assign(state, {sortType: action.payload});
+    case ActionType.SET_LOADING_STATE:
+      return assign(state, {isLoading: action.payload});
   }
 
   return state;

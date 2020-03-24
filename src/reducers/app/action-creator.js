@@ -12,6 +12,10 @@ const ActionCreator = {
   setSortType: (order) => ({
     type: ActionType.SET_SORT_TYPE,
     payload: order
+  }),
+  getLoadingState: (isLoading) => ({
+    type: ActionType.SET_LOADING_STATE,
+    payload: isLoading
   })
 }
 

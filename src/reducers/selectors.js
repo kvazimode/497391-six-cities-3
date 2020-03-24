@@ -10,7 +10,7 @@ export const getSortedOfferList = createSelector(
     getSortType
   ],
   (offerList, currentCity, sortType) => {
-    if (!offerList) {
+    if (offerList.length == 0) {
       return [];
     }
     return sortList(getOfferListByCity(offerList, currentCity), sortType);

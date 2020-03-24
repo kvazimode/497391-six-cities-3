@@ -1,11 +1,10 @@
 import NameSpace from '../name-space.js';
 
-export const getOffers = (state) => {
+export const getOffers = (state) =>
   state[NameSpace.DATA].offerList || [];
-};
-export const getCities = (state) => {
+
+export const getCities = (state) =>
   state[NameSpace.DATA].cityList || [];
-};
 
 const DataSelector = {
   getOffers,

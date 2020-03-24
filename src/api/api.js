@@ -14,7 +14,7 @@ const createAPI = () => {
   const onSuccess = (response) => response;
   const onError = (error) => {
     throw error;
-  }
+  };
 
   api.interceptors.response.use(onSuccess, onError);
 

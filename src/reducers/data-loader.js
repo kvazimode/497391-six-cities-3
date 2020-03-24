@@ -1,14 +1,15 @@
-import {ActionCreator as DataAction} from './data/action-creator.js';
-import {ActionCreator as AppAction} from './app/action-creator.js';
-import {getOfferListByCity, getCityList} from '../utils.js';
+import DataAction from './data/action-creator.js';
+import AppAction from './app/action-creator.js';
+import Adapter from '../adapter/adapter.js';
 
-export const loadOfferList = () => (dispatch, getState, api) => {
-  return api.get(`/hotels`)
-    .then((response) => {
-      const data = response.data;
-      dispatch(DataAction.loadOfferList(offerList));
-      dispatch(AppAction.setCity(city))
-
-    })
-}
-
+export const Loader = {
+  loadOfferList: () => (dispatch, getState, api) => {
+    return api.get(`/hotels`)
+      .then((response) => {
+        const data = Adapter.rawToOfferList(response.data);
+        dispatch(DataAction.loadOfferList(data.offerList));
+        dispatch(DataAction.loadCityList(data.cityList));
+        dispatch(AppAction.setCity(data.cityList[0]))
+      })
+  }
+};

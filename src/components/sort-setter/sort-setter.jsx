@@ -3,13 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer.js';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
-
-const sortTypeMap = {
-  popular: `Popular`,
-  toHigh: `Price: low to high`,
-  toLow: `Price: high to low`,
-  rating: `Top rated first`
-};
+import {sortTypeMap} from '../../utils.js';
 
 const SortSetter = ({sortType, isActive, onClick, onTypeClick}) => {
   const sortTypeClickHandler = (e) => {

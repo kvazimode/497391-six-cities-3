@@ -12,6 +12,6 @@ export const Loader = {
         dispatch(DataAction.loadCityList(data.cityList));
         dispatch(AppAction.setCity(data.cityList[0]));
         dispatch(AppAction.getLoadingState(false));
-      })
+      });
   }
 };

@@ -17,6 +17,6 @@ const ActionCreator = {
     type: ActionType.SET_LOADING_STATE,
     payload: isLoading
   })
-}
+};
 
 export default ActionCreator;

@@ -1,30 +1,30 @@
 const valueAdapter = {
-  city: (raw) => ({city: raw.city.name}),
-  preview_image: (raw) => ({imgLink: raw.preview_image}),
-  images: (raw) => ({images: raw.images}),
-  title: (raw) => ({title: raw.title}),
-  is_favorite: (raw) => ({is_favorite: raw.is_favorite}),
-  is_premium: (raw) => ({isPremium: raw.isPremium}),
-  rating: (raw) => ({rating: raw.rating}),
-  type: (raw) => ({type: raw.type}),
-  bedrooms: (raw) => ({bedrooms: raw.bedrooms}),
-  max_adults: (raw) => ({max_adults: raw.max_adults}),
-  price: (raw) => ({value: raw.price}),
-  goods: (raw) => ({goods: raw.goods}),
-  host: (raw) => ({host: raw.host}),
-  description: (raw) => ({description: raw.description}),
+  city: (raw) => ({city: raw.name}),
+  [`preview_image`]: (raw) => ({imgLink: raw}),
+  images: (raw) => ({images: raw}),
+  title: (raw) => ({title: raw}),
+  [`is_favorite`]: (raw) => ({isFavorite: raw}),
+  [`is_premium`]: (raw) => ({isPremium: raw}),
+  rating: (raw) => ({rating: raw * 20}),
+  type: (raw) => ({type: raw}),
+  bedrooms: (raw) => ({bedrooms: raw}),
+  [`max_adults`]: (raw) => ({maxAdults: raw}),
+  price: (raw) => ({value: raw}),
+  goods: (raw) => ({goods: raw}),
+  host: (raw) => ({host: raw}),
+  description: (raw) => ({description: raw}),
   location: (raw) => {
-    const {latitude, longitude} = raw.location;
+    const {latitude, longitude} = raw;
     const coord = [latitude, longitude];
     return {coord};
   },
-  id: (raw) => ({id: raw.id})
+  id: (raw) => ({id: raw})
 };
 
 const adaptOffer = (offer) => {
   let newOffer = {};
   Object.keys(offer).forEach((key) => {
-    newOffer = Object.assign(newOffer, valueAdapter[key](offer));
+    newOffer = Object.assign(newOffer, valueAdapter[key](offer[key]));
   });
   return newOffer;
 };

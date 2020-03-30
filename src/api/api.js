@@ -1,9 +1,5 @@
 import axios from 'axios';
 
-const Error = {
-  UNAUTHORIZED: 401
-};
-
 const createAPI = () => {
   const api = axios.create({
     baseURL: `https://htmlacademy-react-3.appspot.com/six-cities`,

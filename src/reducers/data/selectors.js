@@ -9,6 +9,6 @@ export const getCities = (state) =>
 const DataSelector = {
   getOffers,
   getCities
-}
+};
 
 export default DataSelector;

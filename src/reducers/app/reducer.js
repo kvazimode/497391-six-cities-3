@@ -6,7 +6,7 @@ const initState = {
   currentOffer: null,
   sortType: `popular`,
   isLoading: false
-}
+};
 
 const reducer = (state = initState, action) => {
   switch (action.type) {

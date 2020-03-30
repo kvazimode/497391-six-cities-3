@@ -15,8 +15,7 @@ export const getLoadingState = (state) =>
 const AppSelector = {
   getSortType,
   getCurrentCity,
-  getCurrentOffer,
-  getLoadingState
+  getCurrentOffer
 };
 
 export default AppSelector;

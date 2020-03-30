@@ -6,6 +6,7 @@ import {getSortType, getCurrentCity, getCurrentOffer} from '../../reducers/app/s
 import {getCities} from '../../reducers/data/selectors.js';
 import {getSortedOfferList} from '../../reducers/selectors.js';
 import withLoading from '../../hocs/with-loading/with-loading.jsx';
+import AppAction from '../../reducers/app/action-creator.js';
 
 class App extends PureComponent {
 
@@ -40,6 +41,7 @@ App.propTypes = {
   cityList: PropTypes.array.isRequired,
   currentCity: PropTypes.string.isRequired,
   currentOffer: PropTypes.object,
+  sortType: PropTypes.string.isRequired,
   handleCityClick: PropTypes.func.isRequired,
   handleOfferTitleClick: PropTypes.func.isRequired,
 };
@@ -54,5 +56,15 @@ const mapStateToProps = (state) => {
   };
 };
 
+const mapDispatchToProps = (dispatch) => ({
+  handleCityClick(currentCity) {
+    dispatch(AppAction.setCity(currentCity));
+    dispatch(getSortedOfferList());
+  },
+  handleOfferTitleClick(offer) {
+    dispatch(AppAction.getCurrentOffer(offer));
+  }
+});
+
 export {App};
-export default withLoading(connect(mapStateToProps)(App));
+export default withLoading(connect(mapStateToProps, mapDispatchToProps)(App));

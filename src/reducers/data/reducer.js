@@ -11,10 +11,10 @@ const reducer = (state = initState, action) => {
     case ActionType.LOAD_OFFER_LIST:
       return assign(state, {offerList: action.payload});
     case ActionType.LOAD_CITY_LIST:
-      return assign(state, {cityList: action.payload})
+      return assign(state, {cityList: action.payload});
   }
 
   return state;
-}
+};
 
 export default reducer;

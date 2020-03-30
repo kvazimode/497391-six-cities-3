@@ -1,24 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer.js';
+import {getSortType} from '../../reducers/app/selectors.js';
+import AppAction from '../../reducers/app/action-creator.js';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
-
-const sortTypeMap = {
-  popular: `Popular`,
-  toHigh: `Price: low to high`,
-  toLow: `Price: high to low`,
-  rating: `Top rated first`
-};
+import {sortTypeMap} from '../../utils.js';
 
 const SortSetter = ({sortType, isActive, onClick, onTypeClick}) => {
   const sortTypeClickHandler = (e) => {
     onTypeClick(e);
     onClick();
   };
+
   return (
     <form className="places__sorting" action="#" method="get">
-      <span className="places__sorting-caption">Sort by</span>
+      <span className="places__sorting-caption">Sort by </span>
       <span className="places__sorting-type" tabIndex="0" onClick={onClick}>
         {sortTypeMap[sortType]}
         <svg className="places__sorting-arrow" width="7" height="4">
@@ -41,13 +37,13 @@ const SortSetter = ({sortType, isActive, onClick, onTypeClick}) => {
 
 const mapStateToProps = (state) => {
   return {
-    sortType: state.sortType
+    sortType: getSortType(state)
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   onTypeClick(e) {
-    dispatch(ActionCreator.setSortType(e.currentTarget.dataset.name));
+    dispatch(AppAction.setSortType(e.currentTarget.dataset.name));
   }
 });
 

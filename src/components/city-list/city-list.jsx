@@ -13,7 +13,7 @@ const CityList = (props) => {
               <a className={`locations__item-link tabs__item ${currentCity === city ? `tabs__item--active` : ``}`}
                 onClick={() => handleCityClick(city)}
                 href="#">
-                <span>{city}</span>
+                <span>{city.name}</span>
               </a>
             </li>
           ))}

@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {getSortType, getCurrentCity, getCurrentOffer} from '../../reducers/app/selectors.js';
 import {getCities} from '../../reducers/data/selectors.js';
 import {getSortedOfferList} from '../../reducers/selectors.js';
+import {getAuthState} from '../../reducers/user/selectors.js';
 import withLoading from '../../hocs/with-loading/with-loading.jsx';
 import AppAction from '../../reducers/app/action-creator.js';
 
@@ -12,6 +13,7 @@ class App extends PureComponent {
 
   _renderApp() {
     const {
+      isAuthorized,
       cityList,
       currentCity,
       offerList,
@@ -22,6 +24,7 @@ class App extends PureComponent {
 
     return (
       <Main
+        isAuthorized={isAuthorized}
         offerList={offerList}
         cityList={cityList}
         currentCity={currentCity}
@@ -48,6 +51,7 @@ App.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
+    isAuthorized: getAuthState(state),
     cityList: getCities(state),
     currentCity: getCurrentCity(state),
     offerList: getSortedOfferList(state),

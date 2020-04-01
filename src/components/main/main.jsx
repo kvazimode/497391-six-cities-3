@@ -7,6 +7,7 @@ import SortSetter from '../sort-setter/sort-setter.jsx';
 
 const Main = (props) => {
   const {
+    isAuthorized,
     offerList,
     handleCityClick,
     currentCity,
@@ -31,7 +32,9 @@ const Main = (props) => {
                   <a className="header__nav-link header__nav-link--profile" href="#">
                     <div className="header__avatar-wrapper user__avatar-wrapper">
                     </div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
+                    {isAuthorized ? 
+                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span> : 
+                    <span className="header__login">Log in</span> }
                   </a>
                 </li>
               </ul>

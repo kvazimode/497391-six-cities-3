@@ -12,7 +12,7 @@ import createAPI from './api/api.js';
 import thunk from 'redux-thunk';
 
 const onUnauthorized = () => {
-    store.dispatch(ActionCreator.setAuthorized(AuthStatus.NO_AUTH));
+  store.dispatch(ActionCreator.setAuthorized(AuthStatus.NO_AUTH));
 };
 
 const api = createAPI(onUnauthorized);

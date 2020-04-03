@@ -40,6 +40,7 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
+  isAuthorized: PropTypes.string,
   offerList: PropTypes.array.isRequired,
   cityList: PropTypes.array.isRequired,
   currentCity: PropTypes.string.isRequired,

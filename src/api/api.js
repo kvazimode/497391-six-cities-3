@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const Error = {
   UNAUTHORIZED: 401
-}
+};
 
 const createAPI = (onUnauth) => {
   const api = axios.create({
@@ -13,7 +13,7 @@ const createAPI = (onUnauth) => {
 
   const onSuccess = (response) => response;
   const onError = (error) => {
-    if (response.status === Error.UNAUTHORIZED) {
+    if (error.response.status === Error.UNAUTHORIZED) {
       onUnauth();
       throw error;
     }

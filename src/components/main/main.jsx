@@ -32,9 +32,10 @@ const Main = (props) => {
                   <a className="header__nav-link header__nav-link--profile" href="#">
                     <div className="header__avatar-wrapper user__avatar-wrapper">
                     </div>
-                    {isAuthorized ? 
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span> : 
-                    <span className="header__login">Log in</span> }
+                    {isAuthorized ?
+                      <span className="header__user-name user__name">Oliver.conner@gmail.com</span> :
+                      <span className="header__login">Log in</span>
+                    }
                   </a>
                 </li>
               </ul>
@@ -72,6 +73,7 @@ Main.defaultProps = {
 };
 
 Main.propTypes = {
+  isAuthorized: PropTypes.string,
   offerList: PropTypes.array.isRequired,
   currentCity: PropTypes.string.isRequired,
   cityList: PropTypes.array.isRequired,

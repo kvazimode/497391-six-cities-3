@@ -9,7 +9,7 @@ const Operation = {
       })
       .catch((err) => {
         throw err;
-      })
+      });
   },
 
   login: (authData) => (dispatch, getState, api) => {

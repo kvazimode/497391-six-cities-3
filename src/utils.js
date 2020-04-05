@@ -31,8 +31,3 @@ export const sortList = (offerList, sortType) => {
       return offerList;
   }
 };
-
-export const AuthStatus = {
-  NO_AUTH: `NO_AUTH`,
-  AUTH: `AUTH`
-};

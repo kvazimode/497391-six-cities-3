@@ -7,7 +7,7 @@ import reducer from './reducers/reducer.js';
 import {Loader} from './reducers/data-loader.js';
 import Operation from './reducers/user/operation.js';
 import ActionCreator from './reducers/user/action-creator.js';
-import {AuthStatus} from './utils.js';
+import {AuthStatus} from './const.js';
 import createAPI from './api/api.js';
 import thunk from 'redux-thunk';
 

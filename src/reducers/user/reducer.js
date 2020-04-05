@@ -1,5 +1,6 @@
 import ActionType from '../action-type';
-import {assign, AuthStatus} from '../../utils.js';
+import {assign} from '../../utils.js';
+import {AuthStatus} from '../../const.js';
 
 const initState = {
   authStatus: AuthStatus.NO_AUTH

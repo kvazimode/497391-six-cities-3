@@ -1,5 +1,5 @@
 import NameSpace from '../name-space.js';
-import {AuthStatus} from '../../utils.js';
+import {AuthStatus} from '../../const.js';
 
 export const getAuthState = (state) =>
   state[NameSpace.USER].authStatus === AuthStatus.AUTH;

@@ -2,12 +2,16 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import Main from '../main/main.jsx';
 import {connect} from 'react-redux';
+import {Switch, Router, Route} from 'react-router-dom';
+import history from '../../history.js';
+import {AppRoute} from '../../const.js';
 import {getSortType, getCurrentCity, getCurrentOffer} from '../../reducers/app/selectors.js';
 import {getCities} from '../../reducers/data/selectors.js';
 import {getSortedOfferList} from '../../reducers/selectors.js';
 import {getAuthState} from '../../reducers/user/selectors.js';
 import withLoading from '../../hocs/with-loading/with-loading.jsx';
 import AppAction from '../../reducers/app/action-creator.js';
+import SignIn from '../sign-in/sign-in.jsx';
 
 class App extends PureComponent {
 
@@ -35,7 +39,18 @@ class App extends PureComponent {
     );
   }
   render() {
-    return this._renderApp();
+    return (
+      <Router history={history} >
+        <Switch>
+          <Route exact path={AppRoute.LOGIN}>
+            <SignIn />
+          </Route>
+          <Route exact path={AppRoute.ROOT}>
+            {this._renderApp()}
+          </Route>
+        </Switch>
+      </Router>
+    );
   }
 }
 
